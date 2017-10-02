@@ -1,0 +1,33 @@
+{
+    "name": "pandawan-technology/stripe-web-hook",
+    "type": "library",
+    "description": "Ease the Stripe' API webhook supports",
+    "license": "MIT",
+    "keywords": ["stripe", "payment", "API", "webhook", "callback", "event"],
+    "authors": [
+        {
+            "name": "Xavier Coureau",
+            "email": "xavier@pandawan-technology.com",
+            "homepage": "https://www.pandawan-technology.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PandawanTechnology\\StripeWebHook\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PandawanTechnology\\StripeWebHook\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "symfony/event-dispatcher": "^3.3",
+        "symfony/http-kernel": "^3.3",
+        "stripe/stripe-php": "^5.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.3"
+    }
+}
