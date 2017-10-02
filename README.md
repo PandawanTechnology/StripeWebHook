@@ -1,4 +1,4 @@
-# PandawanTechnology/StripeEventDispatcher
+# pandawan-technology/stripe-web-hook
 This library intends to ease the Stripe WebHooks behaviors using the `symfony/event-dispatcher` library.
 
 # Installation
