@@ -4,6 +4,7 @@ namespace PandawanTechnology\StripeWebHook\Tests\Events;
 
 use PandawanTechnology\StripeWebHook\StripeFactoryEvent;
 use PHPUnit\Framework\TestCase;
+use Stripe\StripeObject;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 abstract class AbstractEventTest extends TestCase
@@ -83,7 +84,7 @@ abstract class AbstractEventTest extends TestCase
     public function testGetDataObject()
     {
         $data = $this->createMock(\stdClass::class);
-        $object = $this->createMock(\stdClass::class);
+        $object = $this->createMock(StripeObject::class);
         $data->object = $object;
 
         $this->stripeEvent->expects($this->once())

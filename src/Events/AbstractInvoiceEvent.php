@@ -11,7 +11,7 @@ abstract class AbstractInvoiceEvent extends AbstractEvent
      */
     public function getCustomerId(): string
     {
-        return $this->getDataObject()->customer;
+        return (string) $this->getDataObject()->customer;
     }
 
     /**
@@ -19,7 +19,7 @@ abstract class AbstractInvoiceEvent extends AbstractEvent
      */
     public function getAmountDue(): int
     {
-        return $this->getDataObject()->amount_due;
+        return (int) $this->getDataObject()->amount_due;
     }
 
     /**
@@ -27,6 +27,6 @@ abstract class AbstractInvoiceEvent extends AbstractEvent
      */
     public function getCurrencyName(): string
     {
-        return mb_strtoupper($this->getDataObject()->currency);
+        return mb_strtoupper((string) $this->getDataObject()->currency);
     }
 }

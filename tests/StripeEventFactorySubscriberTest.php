@@ -218,10 +218,10 @@ class StripeEventFactorySubscriberTest extends TestCase
     /**
      * @dataProvider dataProviderOnStripeEvent
      *
-     * @param string $eventName
+     * @param string $targetEventName
      * @param string $expectedEventClass
      */
-    public function testOnStripeEvent(string $eventName, string $expectedEventClass)
+    public function testOnStripeEvent(string $targetEventName, string $expectedEventClass)
     {
         $event = $this->createStripeEventFactoryEventMock();
         $eventDispatcher = $this->createMock(EventDispatcherInterface::class);
@@ -266,6 +266,10 @@ class StripeEventFactorySubscriberTest extends TestCase
             )
             ->willReturn($stripeEvent);
 
+        $event->expects($this->once())
+            ->method('getEventName')
+            ->willReturn($targetEventName);
+
         $event->expects($this->never())
             ->method('setException')
             ->with($this->isInstanceOf(BadRequestHttpException::class));
@@ -273,11 +277,11 @@ class StripeEventFactorySubscriberTest extends TestCase
         $eventDispatcher->expects($this->once())
             ->method('dispatch')
             ->with(
-                $this->equalTo($eventName),
+                $this->equalTo($targetEventName),
                 $this->equalTo(new $expectedEventClass($event, $stripeEvent))
             );
 
-        $stripeEventFactorySubscriber->onStripeEvent($event, $eventName, $eventDispatcher);
+        $stripeEventFactorySubscriber->onStripeEvent($event, $targetEventName, $eventDispatcher);
     }
 
     /**

@@ -72,9 +72,9 @@ abstract class AbstractEvent extends Event
     }
 
     /**
-     * @return \stdClass
+     * @return \Stripe\StripeObject
      */
-    public function getDataObject(): \stdClass
+    public function getDataObject(): \Stripe\StripeObject
     {
         return $this->stripeEvent->data->object;
     }

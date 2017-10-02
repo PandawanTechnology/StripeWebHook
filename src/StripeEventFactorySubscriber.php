@@ -60,13 +60,15 @@ class StripeEventFactorySubscriber implements EventSubscriberInterface
             return;
         }
 
-        if (!$eventClass = $this->getEventClass($eventName)) {
+        $targetEventName = $stripeFactoryEvent->getEventName();
+
+        if (!$eventClass = $this->getEventClass($targetEventName)) {
             $stripeFactoryEvent->setException(new BadRequestHttpException(sprintf('Unsupported event "%s"', $eventName)));
 
             return;
         }
 
-        $eventDispatcher->dispatch($eventName, new $eventClass($stripeFactoryEvent, $stripeEvent));
+        $eventDispatcher->dispatch($targetEventName, new $eventClass($stripeFactoryEvent, $stripeEvent));
     }
 
     /**
