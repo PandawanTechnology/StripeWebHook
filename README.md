@@ -4,7 +4,7 @@ This library intends to ease the Stripe WebHooks behaviors using the `symfony/ev
 # Installation
 In order to install the library, you should simple use the following command:
 ```bash
-$ composer require pandawan-technology/stripe-event-dispatcher
+$ composer require pandawan-technology/stripe-web-hook
 ```
 
 # Usage
