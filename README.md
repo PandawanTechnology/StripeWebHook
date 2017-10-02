@@ -1,4 +1,5 @@
-# pandawan-technology/stripe-web-hook
+# pandawan-technology/stripe-web-hook 
+[![Build Status](https://travis-ci.org/PandawanTechnology/StripeWebHook.svg?branch=master)](https://travis-ci.org/PandawanTechnology/StripeWebHook)
 This library intends to ease the Stripe WebHooks behaviors using the `symfony/event-dispatcher` library.
 
 # Installation
@@ -67,6 +68,8 @@ class InvoicePaymentFailedEvent implements EventSubscriberInterface
     {
         if (!$customer = $this->customerRepository->find($event->getCustomerId())) {
             $event->setException(new NotFoundHttpException(sprintf('No customer with Stripe ID "%s"', $event->getCustomerId())));
+            
+            return; // No need to stop propagation here!
         }
         
         $this->mailer->send(
