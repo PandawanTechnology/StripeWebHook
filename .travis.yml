@@ -2,7 +2,6 @@ language: php
 sudo: false
 matrix:
     include:
-        - php: hhvm
         - php: 7.1
           env: deps=high
         - php: 7.1
